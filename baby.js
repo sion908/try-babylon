@@ -34,7 +34,7 @@ function main() {
         }
     
         // Our built-in 'ground' shape.
-        const ground = BABYLON.MeshBuilder.CreateGroundFromHeightMap("gdhm", "https://drive.google.com/uc?id=1VNnWmkJznjrWPQnB_mG--63RkBTfkpod", {width:5, height :5, subdivisions: 10, maxHeight: 1});
+        const ground = BABYLON.MeshBuilder.CreateGroundFromHeightMap("gdhm", "./img/ridge.png", {width:5, height :5, subdivisions: 10, maxHeight: 1});
     
         return scene;
     };

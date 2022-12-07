@@ -20,11 +20,24 @@ function main() {
         // Default intensity is 1. Let's dim the light a small amount
         light.intensity = 0.7;
 
-        for(var i=0;i<3;i++){
+        for(var i=0;i<2;i++){
             var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 0.2, segments: 16}, scene);
-            sphere.position.y = -1;
-            sphere.position.x = i-1;
-            
+            sphere.position.y = 0.1;
+            sphere.position.x = i-0.5;
+            var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 0.2, segments: 16}, scene);
+            sphere.position.y = 1;
+            sphere.position.x = i-0.5;
+        }
+
+        for(var i=0;i<2;i++){
+            var cylinder = BABYLON.MeshBuilder.CreateCylinder("sphere", {diameter: 0.1, height:1.9, segments: 16}, scene);
+            cylinder.position.y = -1;
+            cylinder.position.z = -2;
+            cylinder.position.x = i-0.5;
+            var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 0.2, segments: 16}, scene);
+            sphere.position.y = -2;
+            sphere.position.z = -2;
+            sphere.position.x = i-0.5;
         }
     
         // Our built-in 'ground' shape.

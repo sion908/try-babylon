@@ -67,12 +67,12 @@ function main() {
 
         for(var j=0;j<2;j++){
             for(var i=0;i<2;i++){
-                var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 0.2, segments: 16, updatable: true}, scene);
+                var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", 16,0.2, scene,true);
                 sphere.position.z = (j-0.5)*2;
                 sphere.position.y = 0.1;
                 sphere.position.x = (i-0.5)*2;
                 addLabel(sphere,`temp-g${j*2+i}`)
-                var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 0.2, segments: 16, updatable: true}, scene);
+                var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", 16,0.2, scene,true);
                 sphere.position.z = (j-0.5)*2;
                 sphere.position.y = 1;
                 sphere.position.x = (i-0.5)*2;
@@ -85,7 +85,7 @@ function main() {
             cylinder.position.y = -1;
             cylinder.position.z = -2;
             cylinder.position.x = i-0.5;
-            var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 0.2, segments: 16, updatable: true}, scene);
+            var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", 16,0.2, scene,true);
             sphere.position.y = -2;
             sphere.position.z = -2;
             sphere.position.x = i-0.5;

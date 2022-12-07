@@ -32,6 +32,7 @@ function main() {
         gradientMaterial = new BABYLON.GradientMaterial("grad", scene)
         gradientMaterial.topColor = new BABYLON.Color3(0.95703125,0.5,0.21484375);
         gradientMaterial.bottomColor = new BABYLON.Color3(0.55, 0.27, 0.18);
+        gradientMaterial.backFaceCulling = false;
         ground.material = gradientMaterial;
     
         // skybox

@@ -3,6 +3,9 @@ function main() {
     const engine = new BABYLON.Engine(canvas);
     // ここから
     const addLabel = (sphere,tag)=>{
+        var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+        advancedTexture.idealWidth = 500;
+
         var rect1 = new BABYLON.GUI.Rectangle();
         rect1.width = 0.15;
         rect1.height = "20px";

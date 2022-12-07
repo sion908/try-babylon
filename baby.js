@@ -34,7 +34,7 @@ function main() {
         }
 
         for(var i=0;i<2;i++){
-            var cylinder = BABYLON.MeshBuilder.CreateCylinder("sphere", {diameter: 0.1, height:1.9, segments: 16}, scene);
+            var cylinder = BABYLON.MeshBuilder.CreateCylinder("sphere", {diameter: 0.05, height:1.9, segments: 16}, scene);
             cylinder.position.y = -1;
             cylinder.position.z = -2;
             cylinder.position.x = i-0.5;

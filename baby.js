@@ -19,13 +19,7 @@ function main() {
     
         // Default intensity is 1. Let's dim the light a small amount
         light.intensity = 0.7;
-    
-        // Our built-in 'sphere' shape.
-        var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
-    
-        // Move the sphere upward 1/2 its height
-        sphere.position.y = 1;
-    
+
         for(var i=0;i<3;i++){
             var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 0.2, segments: 16}, scene);
             sphere.position.y = -1;
@@ -39,7 +33,7 @@ function main() {
         gradientMaterial.topColor = new BABYLON.Color3(0.95703125,0.5,0.21484375);
         gradientMaterial.bottomColor = new BABYLON.Color3(0.55, 0.27, 0.18);
         ground.material = gradientMaterial;
-        
+
         return scene;
     };
     

@@ -2,6 +2,40 @@ function main() {
     const canvas = document.getElementById('renderCanvas');
     const engine = new BABYLON.Engine(canvas);
     // ここから
+    const addLabel = (sphere,tag)=>{
+        var rect1 = new BABYLON.GUI.Rectangle();
+        rect1.width = 0.15;
+        rect1.height = "20px";
+        rect1.cornerRadius = 20;
+        // rect1.color = "Orange";
+        // rect1.thickness = 4;
+        rect1.background = "green";
+        advancedTexture.addControl(rect1);
+        rect1.linkWithMesh(sphere);   
+        rect1.linkOffsetY = -30;
+
+        var label = new BABYLON.GUI.TextBlock();
+        label.text = tag;
+        rect1.addControl(label);
+
+        var target = new BABYLON.GUI.Ellipse();
+        target.width = "10px";
+        target.height = "10px";
+        // target.color = "Orange";
+        // target.thickness = 4;
+        target.background = "green";
+        advancedTexture.addControl(target);
+        target.linkWithMesh(sphere);   
+
+        var line = new BABYLON.GUI.Line();
+        line.lineWidth = 2;
+        line.color = "Orange";
+        line.y2 = 10;
+        line.linkOffsetY = -5;
+        advancedTexture.addControl(line);
+        line.linkWithMesh(sphere); 
+        line.connectedControl = rect1;
+    }
     var createScene = function () {
         // This creates a basic Babylon Scene object (non-mesh)
         var scene = new BABYLON.Scene(engine);
@@ -26,10 +60,12 @@ function main() {
                 sphere.position.z = (j-0.5)*2;
                 sphere.position.y = 0.1;
                 sphere.position.x = (i-0.5)*2;
+                addLabel(sphere,`temp-g{j*2+i}`)
                 var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 0.2, segments: 16}, scene);
                 sphere.position.z = (j-0.5)*2;
                 sphere.position.y = 1;
                 sphere.position.x = (i-0.5)*2;
+                addLabel(sphere,`temp-a{j*2+i}`)
             }
         }
 
@@ -42,6 +78,7 @@ function main() {
             sphere.position.y = -2;
             sphere.position.z = -2;
             sphere.position.x = i-0.5;
+            addLabel(sphere, `water-{i}`)
         }
     
         // Our built-in 'ground' shape.

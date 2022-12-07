@@ -16,6 +16,8 @@ function main() {
         advancedTexture.addControl(rect1);
         rect1.linkWithMesh(sphere);   
         rect1.linkOffsetY = -30;
+        rect1.alpha = 0.5;
+        rect.isVisible = false;
 
         var label = new BABYLON.GUI.TextBlock();
         label.text = tag;
@@ -38,6 +40,12 @@ function main() {
         advancedTexture.addControl(line);
         line.linkWithMesh(sphere); 
         line.connectedControl = rect1;
+    
+        sphere.pointerDownObservable.add(function() {
+            // show the rectangle
+            was_visible = rect1.isVisible;
+            rect1.isVisible = !was_visible;
+        });
     }
     var createScene = function () {
         // This creates a basic Babylon Scene object (non-mesh)
@@ -102,6 +110,11 @@ function main() {
         skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
         skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
         skybox.material = skyboxMaterial;
+
+        // .pointerDownObservable.add(function(mesh) {
+        //     // show tag of clicked object
+        //     alert(mesh.tags);
+        // });
 
         return scene;
     };

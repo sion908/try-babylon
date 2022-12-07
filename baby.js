@@ -35,7 +35,11 @@ function main() {
     
         // Our built-in 'ground' shape.
         const ground = BABYLON.MeshBuilder.CreateGroundFromHeightMap("gdhm", "./img/ridge.png", {width:5, height :5, subdivisions: 10, maxHeight: 1});
-    
+        gradientMaterial = new BABYLON.GradientMaterial("grad", scene)
+        gradientMaterial.topColor = new BABYLON.Color3(0.95703125,0.5,0.21484375);
+        gradientMaterial.bottomColor = new BABYLON.Color3(0.55, 0.27, 0.18);
+        ground.material = gradientMaterial;
+        
         return scene;
     };
     

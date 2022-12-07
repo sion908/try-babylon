@@ -17,7 +17,7 @@ function main() {
         rect1.linkWithMesh(sphere);   
         rect1.linkOffsetY = -30;
         rect1.alpha = 0.5;
-        rect.isVisible = false;
+        rect1.isVisible = false;
 
         var label = new BABYLON.GUI.TextBlock();
         label.text = tag;

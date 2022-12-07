@@ -25,11 +25,11 @@ function main() {
                 var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 0.2, segments: 16}, scene);
                 sphere.position.z = (j-0.5)*2;
                 sphere.position.y = 0.1;
-                sphere.position.x = i-0.5;
+                sphere.position.x = (i-0.5)*2;
                 var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 0.2, segments: 16}, scene);
                 sphere.position.z = (j-0.5)*2;
                 sphere.position.y = 1;
-                sphere.position.x = i-0.5;
+                sphere.position.x = (i-0.5)*2;
             }
         }
 

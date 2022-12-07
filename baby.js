@@ -63,12 +63,12 @@ function main() {
                 sphere.position.z = (j-0.5)*2;
                 sphere.position.y = 0.1;
                 sphere.position.x = (i-0.5)*2;
-                addLabel(sphere,`temp-g{j*2+i}`)
+                addLabel(sphere,`temp-g${j*2+i}`)
                 var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 0.2, segments: 16}, scene);
                 sphere.position.z = (j-0.5)*2;
                 sphere.position.y = 1;
                 sphere.position.x = (i-0.5)*2;
-                addLabel(sphere,`temp-a{j*2+i}`)
+                addLabel(sphere,`temp-a${j*2+i}`)
             }
         }
 
@@ -81,7 +81,7 @@ function main() {
             sphere.position.y = -2;
             sphere.position.z = -2;
             sphere.position.x = i-0.5;
-            addLabel(sphere, `water-{i}`)
+            addLabel(sphere, `water-${i}`)
         }
     
         // Our built-in 'ground' shape.

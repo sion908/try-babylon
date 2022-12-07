@@ -33,6 +33,16 @@ function main() {
         gradientMaterial.topColor = new BABYLON.Color3(0.95703125,0.5,0.21484375);
         gradientMaterial.bottomColor = new BABYLON.Color3(0.55, 0.27, 0.18);
         ground.material = gradientMaterial;
+    
+        // skybox
+        var skybox = BABYLON.MeshBuilder.CreateBox("skyBox", { size: 1000.0 }, scene);
+        var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+        skyboxMaterial.backFaceCulling = false;
+        skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("textures/skybox", scene);
+        skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+        skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+        skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+        skybox.material = skyboxMaterial;
 
         return scene;
     };

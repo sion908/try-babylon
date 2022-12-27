@@ -37,9 +37,9 @@ function main() {
           var room = BABYLON.MeshBuilder.CreateBox("desk", opt, scene);
           room.position = new BABYLON.Vector3(x, -0.75, y);
       }
-      var pillar = BABYLON.MeshBuilder.CreateBox('pillar', {size:0.5, height:2}, scene)
-      var pillar1 = BABYLON.MeshBuilder.CreateBox('pillar1', {size:0.5, height:2}, scene)
-      pillar1.position.x=-1.5
+      // var pillar = BABYLON.MeshBuilder.CreateBox('pillar', {size:0.5, height:2}, scene)
+      // var pillar1 = BABYLON.MeshBuilder.CreateBox('pillar1', {size:0.5, height:2}, scene)
+      // pillar1.position.x=-1.5
       const cylTable = BABYLON.MeshBuilder.CreateCylinder("cylTable", {diameter: 1.3, height: 1.2, tessellation: 16}, scene);
       cylTable.scaling=new BABYLON.Vector3(1.5, 0.5, 0.75);
       cylTable.position = new BABYLON.Vector3(-1.25, -0.75, 0.75);
@@ -47,22 +47,58 @@ function main() {
       var door = BABYLON.MeshBuilder.CreateBox("door",{depth:0.05, height:1.5},scene)
       door.position = new BABYLON.Vector3(-1.5, -0.25, -1.475)
   
+      // The first parameter can be used to specify which mesh to import. Here we import all meshes
+      // const resultPromise = BABYLON.SceneLoader.ImportMeshAsync('', "https://sion908.github.io/try-babylon/model/", "fun.glb", scene);
+      
+      var duplicate = function(container, offset_x, offset_z) {
+          let entries = container.instantiateModelsToScene();
   
-      // GUI
-      var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+          for (var node of entries.rootNodes) {
+              if(!node.parent){
+                  node.position.x = offset_x;
+                  node.position.z = offset_z;
+              }
+          }
+          for (var group of entries.animationGroups) {
+              group.play(true);
+          }
+      }
+      
+      BABYLON.SceneLoader.LoadAssetContainer("https://sion908.github.io/try-babylon/model/", "fun.glb", scene, function (container) {
   
-      var button = BABYLON.GUI.Button.CreateImageButton("but", "Click Me", "textures/grass.png");
-      button.width = 0.2;
-      button.height = "40px";
-      button.color = "white";
-      button.background = "green";
-      button.left = 200;
-      button.top = 300;
-      advancedTexture.addControl(button);    
+          for (var node of container.meshes) {
+              if(!node.parent){
+                  node.name="fan";
+                  node.position.y = 0.85;
+                  node.scaling=new BABYLON.Vector3(0.3,0.3,0.3);
+                  console.log(node.rotation)
+              }
+          }
   
-      return scene;
-  
-  };
+          duplicate(container,  1.0,  1.5);
+          duplicate(container,  1.0, -1.5);
+          duplicate(container,  2.5,    0);
+          duplicate(container, -1.0,  1.5);
+          duplicate(container, -1.0, -1.5);
+          duplicate(container, -2.5,    0);
+          
+      });
+    
+        // GUI
+        var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+    
+        var button = BABYLON.GUI.Button.CreateImageButton("but", "Click Me", "textures/grass.png");
+        button.width = 0.2;
+        button.height = "40px";
+        button.color = "white";
+        button.background = "green";
+        button.left = 200;
+        button.top = 300;
+        advancedTexture.addControl(button);    
+    
+        return scene;
+    
+    };
     
     const scene = createScene();
     

@@ -2,4 +2,6 @@
 
 [document](https://doc.babylonjs.com/typedoc/modules/BABYLON)
 
-[リンク](https://playground.babylonjs.com/)
+[playground](https://playground.babylonjs.com/)
+
+[page](https://sion908.github.io/try-babylon/)

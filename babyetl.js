@@ -72,7 +72,7 @@ function main() {
           }
       }
       
-      BABYLON.SceneLoader.LoadAssetContainer("https://sion908.github.io/try-babylon/model/", "fun.glb", scene, function (container) {
+      BABYLON.SceneLoader.LoadAssetContainer("./model/", "fun.glb", scene, function (container) {
           for (var node of container.meshes) {
               if(!node.parent){
                   node.name="fan";

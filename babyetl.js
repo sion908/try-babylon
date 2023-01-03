@@ -1,7 +1,7 @@
 function main() {
     const canvas = document.getElementById('renderCanvas');
     const engine = new BABYLON.Engine(canvas);
-    var createScene = function () {
+   var createScene = function () {
 
       // This creates a basic Babylon Scene object (non-mesh)
       var scene = new BABYLON.Scene(engine);
@@ -58,13 +58,15 @@ function main() {
       var sensor4 = BABYLON.MeshBuilder.CreateSphere("sensor",{diameter:0.2},scene)
       sensor4.position = new BABYLON.Vector3(-2.5,-0.2,0)
   
-      var duplicate = function(container, offset_x, offset_z) {
+      var duplicate = function(container, offset_x, offset_z, rot_y, rot_z) {
           let entries = container.instantiateModelsToScene();
   
           for (var node of entries.rootNodes) {
               if(!node.parent){
                   node.position.x = offset_x;
                   node.position.z = offset_z;
+                  console.log(node.rotation);
+                  node.rotation = new BABYLON.Vector3(Math.PI,Math.PI*rot_y, Math.PI*rot_z);
               }
           }
           for (var group of entries.animationGroups) {
@@ -72,21 +74,21 @@ function main() {
           }
       }
       
-      BABYLON.SceneLoader.LoadAssetContainer("./model/", "fun.glb", scene, function (container) {
+      BABYLON.SceneLoader.LoadAssetContainer("https://sion908.github.io/try-babylon/model/", "fun.glb", scene, function (container) {
           for (var node of container.meshes) {
               if(!node.parent){
                   node.name="fan";
                   node.position.y = 0.85;
-                  node.scaling=new BABYLON.Vector3(0.3,0.3,0.3);
+                  node.scaling=new BABYLON.Vector3(0.25,0.25,0.25);
                   console.log(node.rotation)
               }
           }
-          duplicate(container,  1.0,  1.5);
-          duplicate(container,  1.0, -1.5);
-          duplicate(container,  2.5,    0);
-          duplicate(container, -1.0,  1.5);
-          duplicate(container, -1.0, -1.5);
-          duplicate(container, -2.5,    0);
+          duplicate(container,  1.0,  1.3, -1/2, 1/6);
+          duplicate(container,  1.0, -1.3,  1/2, 1/6);
+          duplicate(container,  2.3,    0,    0, 1/6);
+          duplicate(container, -1.0,  1.3, -1/2, 1/6);
+          duplicate(container, -1.0, -1.3,  1/2, 1/6);
+          duplicate(container, -2.3,    0,    0,-1/6);
       });
     
       // GUI
@@ -107,7 +109,7 @@ function main() {
     
         return scene;
     
-    };
+};
     
     const scene = createScene();
     

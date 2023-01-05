@@ -92,20 +92,20 @@ function main() {
       });
     
       // GUI
-      var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+    //   var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
   
-      var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me");
-      button.width = 0.2;
-      button.height = "40px";
-      button.color = "white";
-      button.background = "green";
-      button.left = 200;
-      button.top = 300;
-      advancedTexture.addControl(button);
-      button.onPointerClickObservable.add(()=>{
-          sensor4.position.x+=0.1;
+    //   var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me");
+    //   button.width = 0.2;
+    //   button.height = "40px";
+    //   button.color = "white";
+    //   button.background = "green";
+    //   button.left = 200;
+    //   button.top = 300;
+    //   advancedTexture.addControl(button);
+    //   button.onPointerClickObservable.add(()=>{
+    //       sensor4.position.x+=0.1;
   
-      })
+    //   })
     
         return scene;
     
